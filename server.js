@@ -3,7 +3,8 @@ var express = require('express'),
 bodyParser = require('body-parser'),
 path = require('path'),
 controllers = require('./controllers'),
-hbs = require('express-handlebars');
+hbs = require('express-handlebars'),
+GoogleApiKey,
 app = express();
 
 /*Configuration*/
@@ -13,7 +14,9 @@ app = express();
 
 app.set('port', (process.env.PORT||3000));
 
-var keys = process.env.GOOGLE_API_KEY;
+/*Google Api Key*/
+
+GoogleApiKey = process.env.GOOGLE_API_KEY;
 
 
 /*View Engine*/
@@ -42,7 +45,7 @@ app.get(['/', '/index', '/show'], function (req, res){
 
 
 	// res.sendFile(__dirname  + '/views/index.html');
-	   res.render('main', {salutation : "Hello There", appName: "Rideprice", key: keys})
+	   res.render('main', {salutation : "Hello There", appName: "Rideprice", APIKey: GoogleApiKey})
 
 });
 

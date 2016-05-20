@@ -88,6 +88,9 @@ function renderGoogleMap(originCoord, destinCoord){
 
 	console.log(originCoord);
 
+$('#map').animate({'height':'384px'},2000, function(){
+
+
   map = new google.maps.Map(document.getElementById("map"),{
       center:
       	originCoord,
@@ -98,4 +101,8 @@ function renderGoogleMap(originCoord, destinCoord){
         scrollwheel: false,
         disableDoubleClickZoom: true
   });
+
+/*  End Animate Function*/
+});
+
 }
