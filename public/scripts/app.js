@@ -91,6 +91,7 @@ function renderGoogleMap(originCoord, destinCoord){
   map = new google.maps.Map(document.getElementById("map"),{
       center:
       	originCoord,
+      	destinCoord,
         zoom:13,
         zoomControl: false,
         scaleControl: false,

@@ -13,6 +13,8 @@ app = express();
 
 app.set('port', (process.env.PORT||3000));
 
+var keys = process.env.GOOGLE_API_KEY;
+
 
 /*View Engine*/
 app.engine('handlebars', hbs({default: 'main'}));
@@ -40,7 +42,7 @@ app.get(['/', '/index', '/show'], function (req, res){
 
 
 	// res.sendFile(__dirname  + '/views/index.html');
-	   res.render('main', {salutation : "Hello There", appName: "Rideprice"})
+	   res.render('main', {salutation : "Hello There", appName: "Rideprice", key: keys})
 
 });
 
