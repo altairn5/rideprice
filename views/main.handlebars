@@ -10,20 +10,54 @@
 	<!-- Vendor Scripts -->
 	<script src="vendor/jQuery/dist/jquery.min.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+   
+   
+  
+    <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
 	<!--  Application Scripts-->
 	<script type="text/javascript" src="static/scripts/app.js"></script>
 
 </head>
-<body>	
+<body>
+	<div class="title">
 	<h1>{{salutation}}</h1>
-	<div class="ridemap">
+	</div>	
+	<div class="main">
+		<div class="ridemap" id="map"></div>
+	</div>
+	<div class="findRide">
+		<form class="findPrice">
+			<label for="orin">Origin Address</label>
+			<input class="originAddress" id="orin"type="text" name="origin" placeholder="Enter Origin Address">
+			<label for="destin">Destination Address</label>
+			<input class="destAddress" id="destin" type="text" name="destination" placeholder="Enter Destination Address">
+			<button class="btn" type="submit" name="submit">Submit</button>
+		</form>
 	</div>
 	<div>
-		<table>
-			<thead></thead>
-			<tbody></tbody>
+		<table class="mainT">
+			<thead class="theader">
+				<tr class="theadRow">
+					<th>Date</th>
+					<th>Surge</th>
+					<th>Distance</th>
+					<th>Duration</th>
+					<th>Best Price</th>
+				</tr>
+			</thead>
+			<tbody class="tbody">
+				<tr class="tRow">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 </body>
+<footer>
+</footer>
 </html>
