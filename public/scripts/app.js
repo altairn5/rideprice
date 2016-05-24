@@ -102,7 +102,17 @@ $('#map').animate({'height':'384px'},2000, function(){
         disableDoubleClickZoom: true
   });
 
+  getRidePrices(originCoord, destinCoord);
+
 /*  End Animate Function*/
 });
 
 }
+
+/*Request Ride Prices*/
+
+var getRidePrices = (origin, destination) =>{
+ 
+ $.get()
+
+};
