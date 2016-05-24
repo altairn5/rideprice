@@ -4,7 +4,8 @@ bodyParser = require('body-parser'),
 path = require('path'),
 controllers = require('./controllers'),
 hbs = require('express-handlebars'),
-GoogleApiKey,
+googleApiKey,
+googleVerification,
 app = express();
 
 /*Configuration*/
@@ -16,7 +17,8 @@ app.set('port', (process.env.PORT||3000));
 
 /*Google Api Key*/
 
-GoogleApiKey = process.env.GOOGLE_API_KEY;
+googleApiKey = process.env.GOOGLE_API_KEY;
+googleVerification = "T_PQhdeThJqwGk9ckWo-CpKIMMdbDw0wXGyjlR0lEZo";
 
 
 /*View Engine*/
@@ -45,7 +47,7 @@ app.get(['/', '/index', '/show'], function (req, res){
 
 
 	// res.sendFile(__dirname  + '/views/index.html');
-	   res.render('main', {salutation : "Hello There", appName: "Rideprice", APIKey: GoogleApiKey})
+	   res.render('main', {salutation : "Hello There", appName: "Rideprice", APIKey: googleApiKey, verification: googleVerification})
 
 });
 
