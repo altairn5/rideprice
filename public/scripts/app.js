@@ -2,6 +2,10 @@ var autocomplete,
 autocompleteEnd,
 defaultBounds,
 options,
+address,
+origin,
+destination,
+markerArray = [],
 map;
 
 $(document).ready(function(){
@@ -13,9 +17,9 @@ $(document).ready(function(){
 	$('form.findPrice').on('submit',function(e){
 
 		e.preventDefault();
-		var address = $(this).serializeArray();
-		var origin = address[0].value;
-		var destination = address[1].value;
+		address = $(this).serializeArray();
+		origin = address[0].value;
+		destination = address[1].value;
 
 		mapCoordinates(origin, destination);
 
@@ -69,13 +73,6 @@ $.when(
 	console.log(originLtLg);
 	console.log(destinLtLg);
 
-    // originlat = originLtLg.lat;
-    // originlng = originLtLg.lng;
-    // destinlat = destinLtLg.lat;
-    // destinlng = destinLtLg.lng;
-
-   
-
     renderGoogleMap(originLtLg,destinLtLg);
     
 });
@@ -86,7 +83,10 @@ $.when(
 
 function renderGoogleMap(originCoord, destinCoord){
 
-	console.log(originCoord);
+
+/*Google Maps Directions Variable*/
+
+var directionsService = new google.maps.DirectionsService;
 
 $('#map').animate({'height':'384px'},2000, function(){
 
@@ -102,17 +102,79 @@ $('#map').animate({'height':'384px'},2000, function(){
         disableDoubleClickZoom: true
   });
 
-  getRidePrices(originCoord, destinCoord);
+/*Create a Renderer for Directions and Binds it to the Map*/
+var directionsDisplay = new google.maps.DirectionsRenderer({map: map}); 
 
-/*  End Animate Function*/
-});
+/*Instantiate an Info Window to Hold Steps Text*/
+var stepDisplay = new google.maps.InfoWindow;
 
+
+/*FS Displays the Route Between the Initial Start and End Selections.*/
+calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map);
+
+getRidePrices(originCoord, destinCoord);
+
+  /*  End Animate Function*/
+  });
+
+/* End Render Google Map Function*/
 }
+
+
+/* Calculate Display Route Function*/
+
+function calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map) {
+  
+  /*First, remove any existing markers from the map.*/
+  for (var i = 0; i < markerArray.length; i++) {
+    markerArray[i].setMap(null);
+  }
+
+ /* Retrieve the Start and End Locations and Create a DirectionsRequest Using DRIVING Directions.*/
+  
+  directionsService.route({
+                          origin: origin,
+                          destination: destination,
+                          travelMode: google.maps.TravelMode.DRIVING
+                          }, 
+                          function(response, status){
+
+                            // Route the directions and pass the response to a function to create
+                            // markers for each step.
+                          if (status === google.maps.DirectionsStatus.OK) {
+
+                                document.getElementById('warnings-panel').innerHTML = '<b>' + response.routes[0].warnings + '</b>';
+
+
+                                directionsDisplay.setDirections(response);
+                                // showSteps(response, markerArray, stepDisplay, map);
+                            } 
+                          else {
+                              window.alert('Directions request failed due to ' + status);
+                          }
+                        });
+ 
+ }
+
+
 
 /*Request Ride Prices*/
 
 var getRidePrices = (origin, destination) =>{
+
+  var coordinates = {};
+  coordinates.lat1 = origin.lat;
+  coordinates.lng1 = origin.lng;
+  coordinates.lat2 = destination.lat;
+  coordinates.lng2 = destination.lng;
+
+  console.log("coordinates object", coordinates);
+
  
- $.get()
+ $.get('/prices', coordinates, function(prices){
+
+        console.log("prices coming back ", prices);;
+
+ })
 
 };

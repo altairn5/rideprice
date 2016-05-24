@@ -51,7 +51,9 @@ app.get(['/', '/index', '/show'], function (req, res){
 
 });
 
-app.get('/prices', controllers.prices.index);
+/*Show Ride Price*/
+
+app.get('/prices', controllers.prices.show);
 
 
 
