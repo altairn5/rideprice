@@ -44,21 +44,27 @@
 		<table class="mainT">
 			<thead class="theader">
 				<tr class="theadRow">
-					<th>Date</th>
+					<th>Ride Type</th>
 					<th>Surge</th>
 					<th>Distance</th>
 					<th>Duration</th>
-					<th>Best Price</th>
+					<th>High Estimate</th>
+					<th>Minimun</th>
+					<th>Estimate</th>
 				</tr>
 			</thead>
-			<tbody class="tbody">
-				<tr class="tRow">
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+			<tbody class="tbody" id="tbody-rides">
+				<script id="rides-template" type="text/x-handlebars-template">
+					<tr class="tRow">
+						<td>{{display_name}}</td>
+						<td>{{surge_multiplier}}</td>
+						<td>{{distance}}</td>
+						<td>{{duration}}</td>
+						<td>{{high_estimate}}</td>
+						<td>{{minimum}}</td>
+						<td>{{estimate}}</td>
+					</tr>
+				 </script>
 			</tbody>
 		</table>
 	</div>

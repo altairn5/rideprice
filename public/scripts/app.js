@@ -9,7 +9,7 @@ markerArray = [],
 map;
 
 $(document).ready(function(){
-  
+
     	console.log('Jamaica');
     	initAutocomplete();
 
@@ -169,9 +169,28 @@ var getRidePrices = (origin, destination) =>{
 
      
      $.get('/prices', coordinates, function(prices){
+            
+            console.log("prices coming back ", prices.prices);;
 
-            console.log("prices coming back ", prices);;
+            var rides = prices.prices;
 
-     })
+            rides.forEach(function(ride) {
+            renderRides(ride);
+            });
+
+     });
 
 };
+
+
+/*Render Rides Functions*/
+
+var renderRides  = ride =>{
+
+      console.log('rendering ride', ride);
+      var ridesHtml = $('#rides-template').html();
+      var albumsTemplate = Handlebars.compile(ridesHtml);
+      var html = ridesTemplate(ride);
+      $('#tbody-rides').prepend(html);
+
+}

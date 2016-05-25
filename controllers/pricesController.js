@@ -37,44 +37,12 @@ function show(req, res){
 	  				}
 	  				else{
 
-                	console.log(response);
                 	res.send(response);
 	  				}
 
             	});
 
-	
-
-   
-       // http.get({
-      	// 		url: "https://api.uber.com/v1/estimates/price?",
-    			// headers: {
-       //  				  Authorization:  "Token " + uberServerToken
-    			// 		 },
-    			// data: 	 {
-				   //      start_latitude: coordinates.lat1,
-				   //      start_longitude: coordinates.lng1,
-				   //      end_latitude: coordinates.lat2,
-				   //      end_longitude: coordinates.lng2
-   				// 	  	 },
-      	// 		},
-   				// function (response){
-
-   				// 	console.log("response = ", response)
-
-   				// 	response.on("error", function(error){
-
-   				// 		console.log("error = ", error);
-   				// 	}),
-
-       //          	response.on("data", function(data){
-
-       //          		console.log("data HERE", data , " and JSON.parse(data)", JSON.parse(data));
-
-       //          		res.send(JSON.parse(data));
-       //          	});
-      	// 		});
-
+	  		/*End Show Controller*/
 			}
 
 
