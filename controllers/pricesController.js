@@ -1,6 +1,10 @@
-var uberServerToken = process.env.UBER_API_KEY;
-var http = require('http'),
-Uber = require('uber-api')({server_token: uberServerToken ,version:'v1'});
+var uberServerToken = process.env.API_UBER;
+
+ //Having issues with process.env.UBER_API_KEY
+var https = require('https'),
+Uber = require('uber-api')({server_token: uberServerToken, version:'v1'});
+console.log("process.env.API_KEY_UBER", process.env.API_UBER, "uberServerToken", uberServerToken);
+
 
 /*Prices Controllers*/
 
@@ -19,21 +23,17 @@ function create(req, res){
 
 function show(req, res){
 
+     var coordinates = req.query;
 
- 
-      var coordinates = req.query;
+	 var options = {
+				 	sLat:coordinates.lat1,
+					sLng:coordinates.lng1,
+					eLat:coordinates.lat2,
+					eLng:coordinates.lng2
+				   };		
+	
 
-
-      console.log("params coming in " , coordinates.lat1);
-      // params coming in  { lat1: '37.763168',
-	  // lng1: '-122.437013',
-	  // lat2: '37.790841',
-	  // lng2: '-122.4012802' }
-
-	  // Uber.getPriceEstimate(start_latitude, start_longitude, end_latitude, end_longitude[, callback])
-
-
-	  Uber.getPriceEstimate(coordinates.lat1, coordinates.lng1, coordinates.lat2, coordinates.lng2 , function (error, response){
+	  Uber.getPriceEstimate(options , function (error, response){
 
 	  				if(error){
 	  					console.log("the error is ", error);
@@ -44,6 +44,41 @@ function show(req, res){
 	  				}
 
             	});
+
+		
+
+		// var options = {
+		// host: 'api.uber.com',
+		// path: '/v1/estimates/price?',
+		// headers: {
+		// 		Authorization:  "Token " + uberServerToken
+		// 		}
+		// 	};
+
+		// var data ={
+		//         start_latitude: coordinates.lat1,
+		//         start_longitude: coordinates.lng1,
+		//         end_latitude: coordinates.lat2,
+		//         end_longitude: coordinates.lng2
+		// 	  	 };
+	
+
+		// https.get(options, data, function(response) {
+		
+		// 	  response.on("prices", function(prices){
+
+  //             console.log("data HERE", prices , " and JSON.parse(data)", JSON.parse(prices));
+
+  //      //          		res.send(JSON.parse(data));
+		// 	  });
+
+		// });
+
+		// write the request parameters
+		// req.write('post=data&is=specified&like=this');
+		// req.end();
+
+
    
        // http.get({
       	// 		url: "https://api.uber.com/v1/estimates/price?",

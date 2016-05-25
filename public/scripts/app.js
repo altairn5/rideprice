@@ -55,13 +55,13 @@ function initAutocomplete() {
 
 function mapCoordinates(addressOne, addressTwo){
 
-    var address = addressOne.replace(/\s|,/g,"+");
+    var StartAddress = addressOne.replace(/\s|,/g,"+");
     console.log(address);
     var endAddress = addressTwo.replace(/\s|,/g,"+");
       console.log(endAddress);
 
 $.when(
-       $.get("https://maps.googleapis.com/maps/api/geocode/json?", {"address" : address}, function(data){
+       $.get("https://maps.googleapis.com/maps/api/geocode/json?", {"address" : StartAddress}, function(data){
          originLtLg = data.results[0].geometry.location;
         }),
 
