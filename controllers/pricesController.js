@@ -1,9 +1,6 @@
-var uberServerToken = process.env.API_UBER;
-
- //Having issues with process.env.UBER_API_KEY
+var uberServerToken = ; //Having issues with process.env.UBER_API_KEY
 var https = require('https'),
 Uber = require('uber-api')({server_token: uberServerToken, version:'v1'});
-console.log("process.env.API_KEY_UBER", process.env.API_UBER, "uberServerToken", uberServerToken);
 
 
 /*Prices Controllers*/
@@ -41,43 +38,12 @@ function show(req, res){
 	  				else{
 
                 	console.log(response);
+                	res.send(response);
 	  				}
 
             	});
 
-		
-
-		// var options = {
-		// host: 'api.uber.com',
-		// path: '/v1/estimates/price?',
-		// headers: {
-		// 		Authorization:  "Token " + uberServerToken
-		// 		}
-		// 	};
-
-		// var data ={
-		//         start_latitude: coordinates.lat1,
-		//         start_longitude: coordinates.lng1,
-		//         end_latitude: coordinates.lat2,
-		//         end_longitude: coordinates.lng2
-		// 	  	 };
 	
-
-		// https.get(options, data, function(response) {
-		
-		// 	  response.on("prices", function(prices){
-
-  //             console.log("data HERE", prices , " and JSON.parse(data)", JSON.parse(prices));
-
-  //      //          		res.send(JSON.parse(data));
-		// 	  });
-
-		// });
-
-		// write the request parameters
-		// req.write('post=data&is=specified&like=this');
-		// req.end();
-
 
    
        // http.get({
