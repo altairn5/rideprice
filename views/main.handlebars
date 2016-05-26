@@ -12,6 +12,8 @@
     <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
    
     <script src="https://maps.googleapis.com/maps/api/js?key={{APIKey}}&libraries=places"></script>
+
+     <script src="vendor/handlebars/handlebars.min.js"></script>
    
     <!-- Verification for Google -->
 
@@ -25,7 +27,7 @@
 </head>
 <body>
 	<div class="title">
-	<h1>{{salutation}}</h1>
+	<h1>{{salutation}} and your age {{age}}</h1>
 	</div>	
 	<div class="main">
 		<div class="ridemap" id="map"></div>
@@ -44,8 +46,8 @@
 		<table class="mainT">
 			<thead class="theader">
 				<tr class="theadRow">
-					<th>Ride Type</th>
-					<th>Surge</th>
+					<th><b>Ride Type</b></th>
+					<th><b>Surge</th>
 					<th>Distance</th>
 					<th>Duration</th>
 					<th>High Estimate</th>
@@ -54,18 +56,18 @@
 				</tr>
 			</thead>
 			<tbody class="tbody" id="tbody-rides">
-				<script id="rides-template" type="text/x-handlebars-template">
-					<tr class="tRow">
-						<td>{{display_name}}</td>
-						<td>{{surge_multiplier}}</td>
-						<td>{{distance}}</td>
-						<td>{{duration}}</td>
-						<td>{{high_estimate}}</td>
-						<td>{{minimum}}</td>
-						<td>{{estimate}}</td>
-					</tr>
-				 </script>
 			</tbody>
+				<script id="rides-template" type="text/x-handlebars-template"> 
+					<tr class="tRow">
+						<td>\{{capitalize this.display_name}}</td>
+						<td>\{{surge_multiplier}}x</td>
+						<td>\{{distance}} miles</td>
+						<td>\{{toMinutes this.duration}}</td>
+						<td>$\{{high_estimate}}.00</td>
+						<td>$\{{minimum}}.00</td>
+						<td>\{{estimate}}</td>
+					</tr></br>
+				</script>
 		</table>
 	</div>
 </body>

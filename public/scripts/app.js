@@ -26,6 +26,24 @@ $(document).ready(function(){
 
     	});
 
+      /*Handlebars Helpers*/
+
+        /*Capitalize Ride Name Helper*/
+        Handlebars.registerHelper('capitalize', function(string){
+
+          var str = string || '';
+          return str.slice(0,1).toUpperCase() + str.slice(1);
+
+        });
+
+        /*Converts Time to Minutes Helper*/
+
+        Handlebars.registerHelper('toMinutes', function(time){
+
+          return time/60 + 'minutes';
+
+        });
+
 });
 
 
@@ -189,8 +207,10 @@ var renderRides  = ride =>{
 
       console.log('rendering ride', ride);
       var ridesHtml = $('#rides-template').html();
-      var albumsTemplate = Handlebars.compile(ridesHtml);
+      console.log("ridesHtml", ridesHtml);
+      var ridesTemplate = Handlebars.compile(ridesHtml);
+      // Assign compiled HTML
       var html = ridesTemplate(ride);
-      $('#tbody-rides').prepend(html);
+      $('#tbody-rides').append(html);
 
 }

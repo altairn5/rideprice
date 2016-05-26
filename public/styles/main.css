@@ -22,6 +22,9 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+		font-family:monospace,serif;
+		font-weight: lighter;
+
 	}
 	
 
@@ -32,7 +35,7 @@
 		border: solid 1px red;
 	}
 
-	html, body, .mainT{
+	html, body, .mainT, .tbody{
 		flex-direction: column;
 	}
 
@@ -75,15 +78,28 @@
 		/*align-content: space-around;*/
 	}
 
-	/*Table header*/
+	/*Table Row header*/
 	.theadRow{
-		/*flex-container*/
 		justify-content:space-around;
-		/*flex-item*/
 		flex-basis:100%;
 
 	}
 
+	/*Table Row*/
+	.tRow{
+		justify-content:space-around;
+	}
+
+	th{
+		text-align: center;
+	}
+
+	th, td{
+		flex-grow: 1;
+		flex-basis: 14%;
+		border: solid thin;
+  		padding: 0.5rem 2rem;
+	}
 
 /*Media Queries*/
 

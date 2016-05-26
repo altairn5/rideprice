@@ -46,8 +46,8 @@ app.use(bodyParser.json());
 app.get(['/', '/index', '/show'], function (req, res){
 
 
-	// res.sendFile(__dirname  + '/views/index.html');
-	   res.render('main', {salutation : "Hello There", appName: "Rideprice", APIKey: googleApiKey, verification: googleVerification})
+	// res.sendFile(__dirname  + '/views/main.html');
+	res.render('main', {salutation : "Hello There", appName: "Rideprice", APIKey: googleApiKey, verification: googleVerification, age:12})
 
 });
 
