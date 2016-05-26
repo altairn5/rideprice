@@ -18,7 +18,7 @@ app.set('port', (process.env.PORT||3000));
 
 /*Google Api Key*/
 
-googleApiKey = process.env.GOOGLE_API_KEY;
+googleApiKey = process.env.RIDEPRICE_API_KEY;
 googleVerification = process.env.GOOGLE_VERIFICATION;
 
 
@@ -48,7 +48,7 @@ app.get(['/', '/index', '/show'], function (req, res){
 
 
 	// res.sendFile(__dirname  + '/views/main.html');
-	res.render('main', {salutation : "Hello There", appName: "Rideprice", APIKey: googleApiKey, verification: googleVerification, age:12})
+	res.render('main', {salutation : "This Is Rideprice", appName: "Rideprice", APIKey: googleApiKey, verification: googleVerification})
 
 });
 

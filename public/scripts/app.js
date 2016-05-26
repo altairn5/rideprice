@@ -81,11 +81,13 @@ function mapCoordinates(addressOne, addressTwo){
    
     $.when(
            $.get("https://maps.googleapis.com/maps/api/geocode/json?", {"address" : StartAddress}, function(data){
-             originLtLg = data.results[0].geometry.location;
+              console.log("data, = ", data);
+             var originLtLg = data.results[0].geometry.location;
             }),
 
           $.get("https://maps.googleapis.com/maps/api/geocode/json?", {"address" : endAddress}, function(data){
-            destinLtLg = data.results[0].geometry.location;
+            var destinLtLg = data.results[0].geometry.location;
+
           })
     ).then(function(){
 
@@ -150,25 +152,25 @@ function calculateAndDisplayRoute(directionsDisplay, directionsService, markerAr
      /* Retrieve the Start and End Locations and Create a DirectionsRequest Using DRIVING Directions.*/
       
       directionsService.route({
-                              origin: origin,
-                              destination: destination,
-                              travelMode: google.maps.TravelMode.DRIVING
+                                origin: origin,
+                                destination: destination,
+                                travelMode: google.maps.TravelMode.DRIVING
                               }, 
                               function(response, status){
 
-                                // Route the directions and pass the response to a function to create
-                                // markers for each step.
-                              if (status === google.maps.DirectionsStatus.OK) {
+                                  // Route the directions and pass the response to a function to create
+                                  // markers for each step.
+                                if (status === google.maps.DirectionsStatus.OK) {
 
-                                    document.getElementById('warnings-panel').innerHTML = '<b>' + response.routes[0].warnings + '</b>';
+                                      document.getElementById('warnings-panel').innerHTML = '<b>' + response.routes[0].warnings + '</b>';
 
 
-                                    directionsDisplay.setDirections(response);
-                                    // showSteps(response, markerArray, stepDisplay, map);
-                                } 
-                              else {
-                                  window.alert('Directions request failed due to ' + status);
-                              }
+                                      directionsDisplay.setDirections(response);
+                                      // showSteps(response, markerArray, stepDisplay, map);
+                                  } 
+                                else {
+                                    window.alert('Directions request failed due to ' + status);
+                                }
                             });
  
  }
