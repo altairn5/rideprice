@@ -7,6 +7,7 @@ hbs = require('express-handlebars'),
 googleApiKey,
 googleVerification,
 app = express();
+require('dotenv').config();
 
 /*Configuration*/
 
@@ -18,7 +19,7 @@ app.set('port', (process.env.PORT||3000));
 /*Google Api Key*/
 
 googleApiKey = process.env.GOOGLE_API_KEY;
-googleVerification = "T_PQhdeThJqwGk9ckWo-CpKIMMdbDw0wXGyjlR0lEZo";
+googleVerification = process.env.GOOGLE_VERIFICATION;
 
 
 /*View Engine*/

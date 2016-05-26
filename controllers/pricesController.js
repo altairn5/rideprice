@@ -1,6 +1,8 @@
-var uberServerToken = ; //Having issues with process.env.UBER_API_KEY
+require('dotenv').config();
+var uberServerToken =  process.env.API_UBER; //Having issues with process.env.UBER_API_KEY
 var https = require('https'),
 Uber = require('uber-api')({server_token: uberServerToken, version:'v1'});
+
 
 
 /*Prices Controllers*/

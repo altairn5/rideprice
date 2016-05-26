@@ -24,6 +24,8 @@ $(document).ready(function(){
 
     		mapCoordinates(origin, destination);
 
+        $('.findPrice').trigger('reset');
+
     	});
 
       /*Handlebars Helpers*/
