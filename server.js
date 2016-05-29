@@ -9,6 +9,9 @@ googleVerification,
 app = express();
 require('dotenv').config();
 
+
+
+
 /*Configuration*/
 
 
@@ -18,7 +21,8 @@ app.set('port', (process.env.PORT||3000));
 
 /*Google Api Key*/
 
-googleApiKey = process.env.RIDEPRICE_API_KEY;
+googleApiKey = process.env.GOOGLE_KEY;
+console.log("googleApiKey = ", googleApiKey)
 googleVerification = process.env.GOOGLE_VERIFICATION;
 
 
@@ -55,6 +59,8 @@ app.get(['/', '/index', '/show'], function (req, res){
 /*Show Ride Price*/
 
 app.get('/prices', controllers.prices.show);
+
+
 
 
 

@@ -1,8 +1,7 @@
 require('dotenv').config();
-var uberServerToken =  process.env.API_UBER; 
-console.log('uberServerToken =', uberServerToken);
+var uberServerToken =  process.env.UBER_S_TOKEN; 
 var https = require('https'),
-Uber = require('uber-api')({server_token: process.env.API_UBER, version:'v1'});
+Uber = require('uber-api')({server_token: uberServerToken, version:'v1'});
 
 
 
@@ -57,6 +56,7 @@ function destroy(req, res){
 function update(req, res){
 
 }
+
 
 
 module.exports = {
