@@ -82,11 +82,11 @@ function mapCoordinates(addressOne, addressTwo){
     $.when(
            $.get("https://maps.googleapis.com/maps/api/geocode/json?", {"address" : StartAddress}, function(data){
               console.log("data, = ", data);
-             var originLtLg = data.results[0].geometry.location;
+            originLtLg = data.results[0].geometry.location;
             }),
 
           $.get("https://maps.googleapis.com/maps/api/geocode/json?", {"address" : endAddress}, function(data){
-            var destinLtLg = data.results[0].geometry.location;
+           destinLtLg = data.results[0].geometry.location;
 
           })
     ).then(function(){
