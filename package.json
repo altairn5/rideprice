@@ -15,5 +15,8 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.4.17",
     "uber-api": "^0.3.3"
+  },
+  "engines":{
+    "node":"4.2.1"
   }
 }
