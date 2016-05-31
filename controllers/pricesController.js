@@ -1,5 +1,5 @@
 require('dotenv').config();
-var uberServerToken =  process.env.API_UBER; 
+var uberServerToken =  process.env.UBER_S_TOKEN; 
 var https = require('https'),
 Uber = require('uber-api')({server_token: uberServerToken, version:'v1'});
 

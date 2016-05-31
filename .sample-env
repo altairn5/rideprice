@@ -1,0 +1,3 @@
+UBER_S_TOKEN=server_token
+GOOGLE_KEY=fake_api_key
+GOOGLE_VERIFICATION=heroku_verification_key

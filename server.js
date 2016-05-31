@@ -18,7 +18,7 @@ app.set('port', (process.env.PORT||3000));
 
 /*Google Api Key*/
 
-googleApiKey = process.env.RIDEPRICE_API_KEY;
+googleApiKey = process.env.GOOGLE_KEY;
 googleVerification = process.env.GOOGLE_VERIFICATION;
 
 

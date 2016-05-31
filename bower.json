@@ -19,6 +19,7 @@
     "jquery": "^2.2.3",
     "bootstrap": "^3.3.6",
     "handlebars": "^4.0.5",
-    "normalize-strings": "normalize#^1.0.4"
+    "normalize-strings": "normalize#^1.0.4",
+    "angular": "^1.5.6"
   }
 }
