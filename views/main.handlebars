@@ -38,16 +38,16 @@
 	<div id="warnings-panel"></div>
 	<div class="findRide">
 		<form ng-model="address" class="findPrice">
-			<label ng-click="helloWorld(address.origin)"for="orin">Origin Address</label>
-			<input ng-model="address.origin" class="originAddress" id="orin" type="text" name="origin" placeholder="Enter Origin Address"/>
+			<label for="orin">Origin Address</label>
+			<input ng-model="address.origin" ng-click="editing = !editing" class="originAddress" id="orin" type="text" name="origin" placeholder="Enter Origin Address"/>
 			<label for="destin">Destination Address</label>
-			<input ng-model="address.destin" class="destAddress" id="destin" type="text" name="destination" placeholder="Enter Destination Address"/>
+			<input ng-model="address.destin" ng-click="desediting = !desediting" class="destAddress" id="destin" type="text" name="destination" placeholder="Enter Destination Address"/>
 			<button class="btn" type="submit" name="submit">Find Rides</button>
 		</form>
 	</div>
 	<div class="table-container">
-		<h1>Origin Address: <span> \{{address.origin}} </span></h1>
-		<h1>Destination Address: <span> \{{address.destin}}</span></h1>
+		<h1 ng-hide="editing">Origin Address: <span> \{{address.origin}} </span></h1>
+		<h1 ng-hide="desediting">Destination Address: <span> \{{address.destin}}</span></h1>
 		<table class="mainT">
 			<thead class="theader">
 				<tr class="theadRow">
