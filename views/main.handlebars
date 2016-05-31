@@ -38,10 +38,10 @@
 	<div id="warnings-panel"></div>
 	<div class="findRide">
 		<form ng-model="address" class="findPrice">
-			<label for="orin">Origin Address</label>
-			<input ng-click="showing = true" ng-model="address.origin" class="originAddress" id="orin" type="text" name="origin" placeholder="Enter Origin Address"/>
-			<label for="destin">Destination Address</label>
-			<input ng-click="showing = true" ng-model="address.destin" class="destAddress" id="destin" type="text" name="destination" placeholder="Enter Destination Address"/>
+			<label for="orin">Origin Address: \{{address.origin}}</label>
+			<input ng-show="showing" ng-click="showing = true" ng-model="address.origin" ng-blur="showing = false" class="originAddress" id="orin" type="text" name="origin" placeholder="Enter Origin Address"/>
+			<label for="destin">Destination Address: \{{address.destin}}</label>
+			<input ng-show="showing" ng-click="showing = true" ng-model="address.destin"  ng-blur="showing = false" class="destAddress" id="destin" type="text" name="destination" placeholder="Enter Destination Address"/>
 			<button  class="btn" type="submit" name="submit">Find Rides</button>
 		</form>
 	</div>
