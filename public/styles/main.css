@@ -52,6 +52,10 @@
 		box-shadow: -3px 0 5px -2px rgba(0,0,0,.15);
 	}
 
+	.title{
+		justify-content: center;
+	}
+
 
 	/*Map Container*/
 
@@ -95,10 +99,11 @@
 		justify-content:space-around;
 	}
 
-	th{
+	th, h1{
 		text-align: center;
 		font-weight: bold;
 	}
+
 
 	th, td{
 		flex-grow: 1;
@@ -112,9 +117,14 @@
 	 ************/
 
 	 .title h1{
+	 	
 		font-weight: bold;
     	font-size: 3em;
     
+	 }
+
+	 h1{
+	 	font-size: 2em;
 	 }
 
 	 button.btn{
