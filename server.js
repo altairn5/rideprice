@@ -9,6 +9,9 @@ googleVerification,
 app = express();
 require('dotenv').config();
 
+
+
+
 /*Configuration*/
 
 
@@ -55,6 +58,8 @@ app.get(['/', '/index', '/show'], function (req, res){
 /*Show Ride Price*/
 
 app.get('/prices', controllers.prices.show);
+
+
 
 
 

@@ -25,6 +25,7 @@ $(document).ready(function(){
     		mapCoordinates(origin, destination);
 
         $('.findPrice').trigger('reset');
+        $('#tbody-rides').children().remove();
 
     	});
 
