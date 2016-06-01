@@ -10,7 +10,6 @@ map;
 
 $(document).ready(function(){
 
-    	console.log('Jamaica');
     	initAutocomplete();
 
 
@@ -82,7 +81,7 @@ function mapCoordinates(addressOne, addressTwo){
    
     $.when(
            $.get("https://maps.googleapis.com/maps/api/geocode/json?", {"address" : StartAddress}, function(data){
-              console.log("data, = ", data);
+            
             originLtLg = data.results[0].geometry.location;
             }),
 
@@ -188,13 +187,9 @@ var getRidePrices = (origin, destination) =>{
       coordinates.lat2 = destination.lat;
       coordinates.lng2 = destination.lng;
 
-      console.log("coordinates object", coordinates);
-
      
      $.get('/prices', coordinates, function(prices){
-            
-            console.log("prices coming back ", prices.prices);;
-
+         
             var rides = prices.prices;
 
             rides.forEach(function(ride) {
@@ -210,9 +205,9 @@ var getRidePrices = (origin, destination) =>{
 
 var renderRides  = ride =>{
 
-      console.log('rendering ride', ride);
+     
       var ridesHtml = $('#rides-template').html();
-      console.log("ridesHtml", ridesHtml);
+     
       var ridesTemplate = Handlebars.compile(ridesHtml);
       // Assign compiled HTML
       var html = ridesTemplate(ride);
