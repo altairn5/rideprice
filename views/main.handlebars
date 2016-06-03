@@ -28,55 +28,59 @@
 	<script type="text/javascript" src="static/scripts/main.js"></script>
 
 </head>
-<body ng-controller="ridePrice">
-	<div class="title">
-	<h1>{{salutation}}</h1>
-	</div>	
-	<div class="main">
-		<div class="ridemap" id="map"></div>
+<body>
+	<div class="title"><h1>{{salutation}}</h1></div>	
+	<div ng-controller="ridePriceCtrl">
+		<div class="main">
+			<div class="ridemap" id="map"></div>
+		</div>
+		<div id="warnings-panel"></div>
+		<div class="findRide">
+			<form ng-model="address" class="findPrice">
+				<label for="orin">Origin Address: \{{address.origin}}</label>
+				<input ng-click="showing = true" ng-show="showing" ng-model="address.origin" class="originAddress" id="orin" type="text" name="origin" placeholder="Enter Origin Address"/>
+				<label for="destin">Destination Address: \{{address.destin}}</label>
+				<input ng-click="showing = true" ng-show="showing"  ng-model="address.destin" class="destAddress" id="destin" type="text" name="destination" placeholder="Enter Destination Address"/>
+				<button ng-click="changeInputType() ;showing = true; displaying = !displaying" class="btn" type="\{{inputType}}" name="reset">\{{buttonValue}}</button>	
+			</form>
+		</div>
+			<h1 ng-show="displaying">Origin Address: <span> \{{address.origin}} </span></h1>
+			<h1 ng-show="displaying">Destination Address: <span> \{{address.destin}}</span></h1>
+			<!-- End Controller -->
 	</div>
-	<div id="warnings-panel"></div>
-	<div class="findRide">
-		<form ng-model="address" class="findPrice">
-			<label for="orin">Origin Address: \{{address.origin}}</label>
-			<input ng-show="showing" ng-click="showing = true" ng-model="address.origin" ng-blur="showing = false" class="originAddress" id="orin" type="text" name="origin" placeholder="Enter Origin Address"/>
-			<label for="destin">Destination Address: \{{address.destin}}</label>
-			<input ng-show="showing" ng-click="showing = true" ng-model="address.destin"  ng-blur="showing = false" class="destAddress" id="destin" type="text" name="destination" placeholder="Enter Destination Address"/>
-			<button  class="btn" type="submit" name="submit">Find Rides</button>
-		</form>
-	</div>
-	<div class="table-container">
-		<h1 ng-show="showing">Origin Address: <span> \{{address.origin}} </span></h1>
-		<h1 ng-show="showing">Destination Address: <span> \{{address.destin}}</span></h1>
-		<table class="mainT">
-			<thead class="theader">
-				<tr class="theadRow">
-					<th>Ride Type</th>
-					<th>Surge</th>
-					<th>Distance</th>
-					<th>Duration</th>
-					<th>High Estimate</th>
-					<th>Minimun</th>
-					<th>Estimate</th>
-				</tr>
-			</thead>
-			<tbody class="tbody" id="tbody-rides">
-			</tbody>
-				<script id="rides-template" type="text/x-handlebars-template"> 
-					<tr class="tRow">
-						<td>\{{capitalize this.display_name}}</td>
-						<td>\{{surge_multiplier}}x</td>
-						<td>\{{distance}} miles</td>
-						<td>\{{toMinutes this.duration}}</td>
-						<td>$\{{high_estimate}}.00</td>
-						<td>$\{{minimum}}.00</td>
-						<td>\{{estimate}}</td>
-					</tr></br>
-				</script>
-		</table>
-	</div>
+		<div class="table-container">
+			<table class="mainT">
+				<thead class="theader">
+					<tr class="theadRow">
+						<th>Ride Type</th>
+						<th>Surge</th>
+						<th>Distance</th>
+						<th>Duration</th>
+						<th>High Estimate</th>
+						<th>Minimun</th>
+						<th>Estimate</th>
+					</tr>
+				</thead>
+				<tbody class="tbody" id="tbody-rides">
+				</tbody>
+					<script id="rides-template" type="text/x-handlebars-template"> 
+						<tr class="tRow">
+							<td>\{{capitalize this.display_name}}</td>
+							<td>\{{surge_multiplier}}x</td>
+							<td>\{{distance}} miles</td>
+							<td>\{{toMinutes this.duration}}</td>
+							<td>$\{{high_estimate}}.00</td>
+							<td>$\{{minimum}}.00</td>
+							<td>\{{estimate}}</td>
+						</tr></br>
+					</script>
+			</table>
+		</div>
 
+	<!-- Angular Dependecies -->	
 	<script type="text/javascript" src="static/scripts/app.js"></script>
+	<script type="text/javascript" src="static/scripts/angControllers/rideprice.js"></script>
+	<script type="text/javascript" src="static/scripts/directives/first.js"></script>
 </body>
 <footer>
 </footer>
